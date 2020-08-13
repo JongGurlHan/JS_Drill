@@ -10,4 +10,12 @@ public class MainController {
 	public String main() {
 		return "main";
 	}
+	@GetMapping("/main/main_map")
+	public String main_map() {
+		return "main/main_map";
+	}
+	@GetMapping("/main/main_bulletin")
+	public String main_bulletin() {
+		return "main/main_bulletin";
+	}
 }
