@@ -13,7 +13,7 @@
 	<style>
 	body,h1 {font-family: "Raleway", sans-serif}
 	body, html {height: 100%}
-	.bgimg {
+    .bgimg {
 	  background-image: url('image/image_index.png');
 	  min-height: 100%;
 	  background-position: center;

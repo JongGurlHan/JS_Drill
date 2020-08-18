@@ -22,6 +22,18 @@ public class UserBean {
 	@Size(min=4, max=20)
 	@Pattern(regexp = "[a-zA-Z0-9]*")
 	private String user_pw2;
+	
+	private boolean userIdExist;
+	
+	//로그인 여부값을 담을 변수 셋팅
+	private boolean userLogin;
+	
+	//최소 값이 false가 되도록 생성자 만든다.
+	public UserBean() {
+		this.userIdExist = false;
+		this.userLogin = false;
+		
+	}
 
 	public int getUser_idx() {
 		return user_idx;
@@ -62,8 +74,22 @@ public class UserBean {
 	public void setUser_pw2(String user_pw2) {
 		this.user_pw2 = user_pw2;
 	}
-	
-	
-	
+
+	public boolean isUserIdExist() {
+		return userIdExist;
+	}
+
+	public void setUserIdExist(boolean userIdExist) {
+		this.userIdExist = userIdExist;
+	}
+
+	public boolean isUserLogin() {
+		return userLogin;
+	}
+
+	public void setUserLogin(boolean userLogin) {
+		this.userLogin = userLogin;
+	}
+		
 
 }

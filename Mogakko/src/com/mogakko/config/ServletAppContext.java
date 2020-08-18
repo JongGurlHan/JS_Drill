@@ -3,6 +3,7 @@ package com.mogakko.config;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.mapper.MapperFactoryBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -15,13 +16,18 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.mogakko.mapper.UserMapper;
+
 //스프링 mvc 프로젝트에 관련된 설정을 하는 클래스
 @Configuration
 //Controller 어노테이션이 셋팅되어있는 클래스를 Controller로 등록한다. 
 @EnableWebMvc
 //스캔할 패키지를 시정한다.
 @ComponentScan("com.mogakko.controller")
+@ComponentScan("com.mogakko.dao")
+@ComponentScan("com.mogakko.service")
 @PropertySource("/WEB-INF/properties/db.properties")
+/* @PropertySource("/WEB-INF/properties/error_message.properties") */
 public class ServletAppContext implements WebMvcConfigurer{
 	
 	@Value("${db.classname}")
@@ -72,6 +78,15 @@ public class ServletAppContext implements WebMvcConfigurer{
 		return factory;
 	}
 	
+	//쿼리문 실행을 위한 객체(Mapper관리)
+	
+	@Bean
+	public MapperFactoryBean<UserMapper> getUserMapper(SqlSessionFactory factory) throws Exception{
+		MapperFactoryBean<UserMapper> factoryBean = new MapperFactoryBean<UserMapper>(UserMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+	}
+
 		
 	
 	//두개의 프로퍼터기 따로 관리된다.

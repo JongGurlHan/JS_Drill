@@ -1,5 +1,5 @@
 package com.mogakko.mapper;
 
-public class BoardMapper {
+public interface BoardMapper {
 
 }
