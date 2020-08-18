@@ -1,9 +1,12 @@
 package com.mogakko.config;
 
+import javax.annotation.Resource;
+
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperFactoryBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -12,11 +15,18 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.mogakko.beans.UserBean;
+import com.mogakko.interceptor.CheckLoginInterceptor;
+import com.mogakko.interceptor.TopMenuInterceptor;
+import com.mogakko.mapper.TopMenuMapper;
 import com.mogakko.mapper.UserMapper;
+import com.mogakko.service.TopMenuService;
 
 //스프링 mvc 프로젝트에 관련된 설정을 하는 클래스
 @Configuration
@@ -41,6 +51,12 @@ public class ServletAppContext implements WebMvcConfigurer{
 
 	@Value("${db.password}")
 	private String db_password;
+	
+	@Autowired
+	private TopMenuService topMenuService;
+	
+	@Resource(name = "loginUserBean") //세션 영역에 저장해 놓은 loginUserBean을 주입받는다.
+	private UserBean loginUserBean;
 	
 		
 	//controller의 메서드가 반환하는 jsp의이름 앞뒤에 경로와 확장자를 붙혀주도록 설정한다. 
@@ -87,7 +103,29 @@ public class ServletAppContext implements WebMvcConfigurer{
 		return factoryBean;
 	}
 
+	@Bean
+	public MapperFactoryBean<TopMenuMapper> getTopMenuMapper(SqlSessionFactory factory) throws Exception{
+		MapperFactoryBean<TopMenuMapper> factoryBean = new MapperFactoryBean<TopMenuMapper>(TopMenuMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+	}
+	
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {		
+		WebMvcConfigurer.super.addInterceptors(registry);
 		
+		TopMenuInterceptor topMenuInterceptor = new TopMenuInterceptor(topMenuService, loginUserBean);
+		
+		InterceptorRegistration reg1 = registry.addInterceptor(topMenuInterceptor);
+		//모든 요청에 대해서 인터셉터를 통과할 수 있도록 설정
+		reg1.addPathPatterns("/**");
+		
+		CheckLoginInterceptor checkLoginInterceptor = new CheckLoginInterceptor(loginUserBean);
+		InterceptorRegistration reg2 = registry.addInterceptor(checkLoginInterceptor);
+		reg2.addPathPatterns("/user/modify", "/user/logout", "/board/*");
+		reg2.excludePathPatterns("/board/main");
+		
+	}	
 	
 	//두개의 프로퍼터기 따로 관리된다.
 	//자바코드 방식에선 properties파일을 propertySource로 등록하고, 파일이 다르다 하더라도, 메세지로 등록하면 
@@ -105,6 +143,8 @@ public class ServletAppContext implements WebMvcConfigurer{
 		return res;
 		
 	}
+	
+	
 	
 
 }

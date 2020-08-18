@@ -37,8 +37,8 @@ public class UserController {
 		model.addAttribute("fail", fail);
 		
 		return "user/login";
-	}	
-	
+	}
+
 	@PostMapping("/login_pro")
 	public String login_pro(@Valid @ModelAttribute("temLoginUserBean") UserBean tempLoginUserBean, BindingResult result) {
 		
@@ -55,7 +55,7 @@ public class UserController {
 		}	
 		
 	}
-
+	
 	@GetMapping("/join")
 	public String join(@ModelAttribute("joinUserBean") UserBean joinUserBean) {
 		return "user/join";
@@ -79,7 +79,15 @@ public class UserController {
 	
 	@GetMapping("/logout")
 	public String logout() {
+		
+		loginUserBean.setUserLogin(false);
+		
 		return "user/logout";
+	}
+	
+	@GetMapping("/not_login")
+	public String not_login() {
+		return "user/not_log";
 	}
 	
 	@InitBinder
