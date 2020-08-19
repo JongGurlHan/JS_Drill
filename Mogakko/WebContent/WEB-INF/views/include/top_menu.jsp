@@ -16,7 +16,7 @@
 	</button>
 	
 	<div class="collapse navbar-collapse" id="navMenu">
-		<ul class="navbar-nav">
+		<ul class="navbar-nav">		
 			<li class="nav-item">
 				<a href="${root}main/main_map" class="nav-link">지도로 보기</a>
 			</li> 

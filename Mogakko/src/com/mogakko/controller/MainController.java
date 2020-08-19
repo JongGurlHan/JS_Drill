@@ -1,21 +1,24 @@
 package com.mogakko.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@RequestMapping("/main")
 public class MainController {
 
-	@GetMapping("/main")
-	public String main() {
-		return "main";
-	}
-	@GetMapping("/main/main_map")
+	
+	@GetMapping("/main_map")
 	public String main_map() {
 		return "main/main_map";
 	}
-	@GetMapping("/main/main_bulletin")
+	
+	@GetMapping("/main_bulletin")
 	public String main_bulletin() {
 		return "main/main_bulletin";
-	}
+	}	
+
 }
