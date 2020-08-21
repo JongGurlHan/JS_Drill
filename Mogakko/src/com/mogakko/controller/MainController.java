@@ -1,16 +1,13 @@
 package com.mogakko.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/main")
 public class MainController {
-
-	
+		
 	@GetMapping("/main_map")
 	public String main_map() {
 		return "main/main_map";
@@ -18,6 +15,7 @@ public class MainController {
 	
 	@GetMapping("/main_bulletin")
 	public String main_bulletin() {
+				
 		return "main/main_bulletin";
 	}	
 
