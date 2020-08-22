@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/main")
 public class MainController {
-		
+			
 	@GetMapping("/main_map")
 	public String main_map() {
 		return "main/main_map";
@@ -17,6 +17,8 @@ public class MainController {
 	public String main_bulletin() {
 				
 		return "main/main_bulletin";
-	}	
+	}
+	
+	
 
 }
