@@ -24,10 +24,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.mogakko.beans.UserBean;
 import com.mogakko.interceptor.CheckLoginInterceptor;
+import com.mogakko.interceptor.CheckWriterInterceptor;
 import com.mogakko.interceptor.TopMenuInterceptor;
 import com.mogakko.mapper.BoardMapper;
 import com.mogakko.mapper.TopMenuMapper;
 import com.mogakko.mapper.UserMapper;
+import com.mogakko.service.BoardService;
 import com.mogakko.service.TopMenuService;
 
 //스프링 mvc 프로젝트에 관련된 설정을 하는 클래스
@@ -59,6 +61,9 @@ public class ServletAppContext implements WebMvcConfigurer{
 	
 	@Resource(name = "loginUserBean") //세션 영역에 저장해 놓은 loginUserBean을 주입받는다.
 	private UserBean loginUserBean;
+	
+	@Autowired
+	private BoardService boardService;
 	
 		
 	//controller의 메서드가 반환하는 jsp의이름 앞뒤에 경로와 확장자를 붙혀주도록 설정한다. 
@@ -133,6 +138,10 @@ public class ServletAppContext implements WebMvcConfigurer{
 		InterceptorRegistration reg2 = registry.addInterceptor(checkLoginInterceptor);
 		reg2.addPathPatterns("/user/modify", "/user/logout", "/board/*");
 		reg2.excludePathPatterns("/board/main");
+		
+		CheckWriterInterceptor checkWriterInterceptor = new CheckWriterInterceptor(loginUserBean, boardService);
+		InterceptorRegistration reg3 = registry.addInterceptor(checkWriterInterceptor);
+		reg3.addPathPatterns("/board/modify", "/board/delete");
 		
 	}	
 	
