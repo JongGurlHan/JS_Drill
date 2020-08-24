@@ -84,6 +84,11 @@ public class BoardService {
 		
 		boardDao.modifyContentInfo(modifyContentBean);
 	 }
+	
+	//게시글 삭제하기
+	public void deleteContentInfo(int content_idx ) {
+		boardDao.deleteContentInfo(content_idx);
+	}
 
 }
 

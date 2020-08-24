@@ -2,6 +2,7 @@ package com.mogakko.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -34,6 +35,11 @@ public class BoardDao {
 	//게시글 수정하기
 	public void modifyContentInfo(ContentBean modifyContentBean) {
 		boardMapper.modifyContentInfo(modifyContentBean);
+	}
+	
+	//게시글 삭제하기
+	public void deleteContentInfo(int content_idx ) {
+		boardMapper.deleteContentInfo(content_idx);
 	}
 	
 	

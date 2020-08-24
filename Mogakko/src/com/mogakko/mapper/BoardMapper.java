@@ -2,6 +2,7 @@ package com.mogakko.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
@@ -49,6 +50,10 @@ public interface BoardMapper {
 			+ "where content_idx = #{content_idx}")
 	void modifyContentInfo(ContentBean modifyContentBean);
 	
+	
+	//게시글 삭제하기
+	@Delete("delete from content_table where content_idx =#{content_idx}")
+	void deleteContentInfo(int content_idx );
 	
 	
 

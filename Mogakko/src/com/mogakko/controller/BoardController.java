@@ -123,5 +123,18 @@ public class BoardController {
 		return "board/not_writer";
 	}
 	
+	@GetMapping("/delete")
+	public String delete(@RequestParam("board_info_idx") int board_info_idx, 
+						@RequestParam("content_idx") int content_idx,
+						Model model) {
+		
+		boardService.deleteContentInfo(content_idx);
+		
+		model.addAttribute("board_info_idx", board_info_idx);
+		
+		return "board/delete";
+	}
+	
+	
 
 }
