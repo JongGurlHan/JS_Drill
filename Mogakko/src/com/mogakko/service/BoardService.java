@@ -70,6 +70,20 @@ public class BoardService {
 	public ContentBean getContentInfo(int board_info_idx) {
 		return boardDao.getContentInfo(board_info_idx);
 	}
+	
+	//게시글 수정하기
+	public void modifyContentInfo(ContentBean modifyContentBean) {
+		
+		MultipartFile upload_File = modifyContentBean.getUpload_file();
+		
+		//업로드 된게 있다면 
+		if(upload_File.getSize() > 0 ) {
+			String file_name = saveUploadFile(upload_File);
+			modifyContentBean.setContent_file(file_name);
+		}	
+		
+		boardDao.modifyContentInfo(modifyContentBean);
+	 }
 
 }
 

@@ -31,6 +31,11 @@ public class BoardDao {
 		return boardMapper.getContentInfo(board_info_idx);
 	}
 	
+	//게시글 수정하기
+	public void modifyContentInfo(ContentBean modifyContentBean) {
+		boardMapper.modifyContentInfo(modifyContentBean);
+	}
+	
 	
 
 }
