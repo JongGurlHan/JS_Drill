@@ -2,7 +2,8 @@ package com.mogakko.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -16,15 +17,17 @@ public class BoardDao {
 	private BoardMapper boardMapper;
 	
 	public void addContentInfo(ContentBean writeContentBean) {		
+		
 		boardMapper.addContentInfo(writeContentBean);		
 	}
-	//게시판 이름 가져오기
+	
+	//게시판 이름 가져오기	
 	public String getBoardInfoName(int board_info_idx) {
 		return boardMapper.getBoardInfoName(board_info_idx);
 	}
 	//게시판 리스트 가져오기
-	public List<ContentBean> getContentList(int board_info_idx){
-		return boardMapper.getContentList(board_info_idx);
+	public List<ContentBean> getContentList(int board_info_idx, RowBounds rowBounds){
+		return boardMapper.getContentList(board_info_idx, rowBounds);
 		
 	}
 	//게시글 정보 가져오기
@@ -41,6 +44,13 @@ public class BoardDao {
 	public void deleteContentInfo(int content_idx ) {
 		boardMapper.deleteContentInfo(content_idx);
 	}
+	
+	//해당 게시판의 전체 글의 개수 가져오기
+	public int getContentCnt(int content_board_idx) {
+		return boardMapper.getContentCnt(content_board_idx);		
+	}
+	
+	
 	
 	
 

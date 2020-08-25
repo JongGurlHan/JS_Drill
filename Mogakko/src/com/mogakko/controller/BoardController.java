@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mogakko.beans.ContentBean;
+import com.mogakko.beans.PageBean;
 import com.mogakko.beans.UserBean;
 import com.mogakko.service.BoardService;
 
@@ -30,9 +31,11 @@ public class BoardController {
 	@Resource(name = "loginUserBean")
 	private UserBean loginUserBean;
 	
+	//request파라미터로 게시판인덱스(board_info_idx), 하단페이지(page,기본값1) 받는다.
 	@GetMapping("/main")
 	public String main(@RequestParam("board_info_idx") int board_info_idx,
-			Model model) {
+						@RequestParam(value = "page", defaultValue = "1") int page,
+						Model model) {
 		model.addAttribute("board_info_idx", board_info_idx);
 		
 		//게시판 이름 가져오기
@@ -40,11 +43,15 @@ public class BoardController {
 		model.addAttribute("boardInfoName" ,boardInfoName);
 		
 		//게시판 리스트 가져오기
-		List<ContentBean> contentList =  boardService.getContentList(board_info_idx);
+		List<ContentBean> contentList =  boardService.getContentList(board_info_idx, page);
 		model.addAttribute("contentList" , contentList);
+		
+		PageBean pageBean = boardService.getContentCnt(board_info_idx, page);
+		model.addAttribute("pageBean", pageBean);
 		
 		return "board/main";
 	}
+	
 	@GetMapping("/read")
 	public String read(@RequestParam("board_info_idx") int board_info_idx,
 					   @RequestParam("content_idx") int content_idx,

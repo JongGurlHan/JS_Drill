@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mogakko.beans.ContentBean;
+import com.mogakko.beans.PageBean;
 import com.mogakko.beans.UserBean;
 import com.mogakko.dao.BoardDao;
 
@@ -21,6 +23,12 @@ public class BoardService {
 	
 	@Value("${path.upload}")
 	private String path_upload;	
+	
+	@Value("${page.listcnt}")
+	private int page_listcnt;
+
+	@Value("${page.paginationcnt}")
+	private int page_paginationcnt;
 	
 	@Autowired
 	private BoardDao boardDao;
@@ -62,8 +70,12 @@ public class BoardService {
 	}
 	
 	//게시판 리스트 가져오기
-	public  List<ContentBean> getContentList(int board_info_idx){
-		return boardDao.getContentList(board_info_idx);
+	public List<ContentBean> getContentList(int board_info_idx, int page){
+		
+		int start = (page -1) * page_listcnt;
+		RowBounds rowBounds = new RowBounds(start, page_listcnt);
+		
+		return boardDao.getContentList(board_info_idx, rowBounds);
 	}
 	
 	//게시글 정보 가져오기
@@ -75,7 +87,7 @@ public class BoardService {
 	public void modifyContentInfo(ContentBean modifyContentBean) {
 		
 		MultipartFile upload_File = modifyContentBean.getUpload_file();
-		
+		{
 		//업로드 된게 있다면 
 		if(upload_File.getSize() > 0 ) {
 			String file_name = saveUploadFile(upload_File);
@@ -83,11 +95,23 @@ public class BoardService {
 		}	
 		
 		boardDao.modifyContentInfo(modifyContentBean);
-	 }
+		}
+	}
 	
 	//게시글 삭제하기
 	public void deleteContentInfo(int content_idx ) {
 		boardDao.deleteContentInfo(content_idx);
+	}
+	
+	//게시판번호, 현재 페이지 번호 받는다.
+	public PageBean getContentCnt(int content_board_idx, int currentPage) {
+		
+		int content_cnt = boardDao.getContentCnt(content_board_idx);
+		
+		//생성자로 다음의 4개 값을 넘긴다. 
+		PageBean pageBean = new PageBean(content_cnt, currentPage, page_listcnt, page_paginationcnt);
+		
+		return pageBean;
 	}
 
 }
