@@ -14,7 +14,7 @@
 	body,h1 {font-family: "Raleway", sans-serif}
 	body, html {height: 100%}
     .bgimg {
-	  background-image: url('image/image_index.png');
+	  background-image: url('resources/image/image_index.png');
 	  min-height: 100%;
 	  background-position: center;
 	  background-size: cover;
@@ -54,7 +54,7 @@
         
       </div>
       <p>
-      <button class="w3-button w3-dark-grey" onclick ="location.href= '${root}main'">모각코 모임검색</button></p>
+      <button class="w3-button w3-dark-grey" onclick ="location.href= '${root}main/main_map'">모각코 모임검색</button></p>
     </div>
     
     
