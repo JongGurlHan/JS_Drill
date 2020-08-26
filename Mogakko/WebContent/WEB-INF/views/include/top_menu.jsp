@@ -28,7 +28,7 @@
 		
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item">
-				<a href="${root}user/join" class="nav-link">모각코만들기</a>
+				<a href="${root}board/write?board_info_idx=1" class="nav-link">모각코만들기</a>
 			</li>		
 		
 			<c:choose>

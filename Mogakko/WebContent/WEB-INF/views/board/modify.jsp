@@ -30,6 +30,8 @@
 					<form:form action = '${root}board/modify_pro' method = 'post' modelAttribute="modifyContentBean" enctype="multipart/form-data">
 						<form:hidden path="content_idx"/>  <!-- 글 수정할때 어떤 글을 수정할지 알아야하기 때문에 -->
 						<form:hidden path="content_board_idx"/> 
+						<input type = "hidden" name = "page" value = ${page }>
+						
 						<div class="form-group">
 							<form:label path="content_writer_name">작성자</form:label>
 							<form:input path="content_writer_name" class="form-control" readonly ="true"/>
@@ -60,7 +62,7 @@
 						<div class="form-group">
 							<div class="text-right">
 								<form:button class="btn btn-primary">수정완료</form:button>
-								<a href="${root }board/read?board_info_idx=${board_info_idx}&content_idx=${content_idx}" class="btn btn-info">취소</a>
+								<a href="${root }board/read?board_info_idx=${board_info_idx}&content_idx=${content_idx}&page=${page}" class="btn btn-info">취소</a>
 							</div>
 						</div>
 					</form:form>

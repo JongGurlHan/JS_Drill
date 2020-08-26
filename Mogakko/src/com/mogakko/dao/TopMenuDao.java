@@ -14,6 +14,7 @@ public class TopMenuDao {
 	@Autowired
 	private TopMenuMapper topMenuMapper;
 	
+	//게시판 이름 가져오는 메소드
 	public List<BoardInfoBean> getTopMenuList(){
 		
 		List<BoardInfoBean> topMenuList = topMenuMapper.getTopMenuList();
