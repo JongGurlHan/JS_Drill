@@ -16,6 +16,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+<style>
+<c:import url ="/resources/css/search.css"/>
+ 
+ </style>
+
+
 </head>
 <body>
 
@@ -27,9 +34,8 @@
 		<div class="col-sm-3"></div>
 		<div class="col-sm-6">
 			<div class="card shadow">
-				<div class="card-body">
+				<div class="card-body">				
 				
-					<%-- <form action="${root}board/read" method="get"> --%>
 					<form:form action ="${root}board/write_pro" method = "post" modelAttribute="writeContentBean" enctype="multipart/form-data">
 						<form:hidden path="content_board_idx"/> <!-- 게시판번호세팅 -->
 						<div class="form-group">
@@ -47,6 +53,15 @@
 							<form:input type='file' path="upload_file" class="form-control" accept="image/*"/>
 						</div>
 						<div class="form-group">
+							
+							<form:label path="content_location">위치 설정</form:label>	
+							<!-- 위치찾기는 따로 파일만들어서 import -->
+							<c:import url = "/WEB-INF/views/javascript/search.jsp"/>
+							
+							
+					
+						
+						<div class="form-group">
 							<div class="text-right">
 								<form:button class="btn btn-primary">작성하기</form:button>
 							</div>
@@ -60,7 +75,7 @@
 	</div>
 </div>
 
-<c:import url = "/WEB-INF/views/include/bottom_info.jsp"/>	
+<%-- <c:import url = "/WEB-INF/views/include/bottom_info.jsp"/> --%>	
 
 </body>
 </html>
