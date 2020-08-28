@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mogakko.beans.BoardInfoBean;
 import com.mogakko.beans.ContentBean;
+import com.mogakko.service.BoardService;
 import com.mogakko.service.MainService;
 import com.mogakko.service.TopMenuService;
 
@@ -23,6 +24,10 @@ public class MainController {
 	
 	@Autowired
 	private TopMenuService topMenuService;
+	
+	@Autowired
+	private BoardService boardService;
+	
 		
 	
 	@GetMapping("/main_bulletin")
@@ -40,12 +45,16 @@ public class MainController {
 		List<BoardInfoBean> board_list = topMenuService.getTopMenuList();
 		model.addAttribute("board_list" , board_list);
 		
+				
 		return "main/main_bulletin";
 	}
 	
 	
 	@GetMapping("/main_map")
-	public String main_map() {
+	public String main_map(Model model) {
+		
+		
+		
 		return "main/main_map";
 	}
 	

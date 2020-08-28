@@ -29,7 +29,7 @@ public class ContentBean {
     
     //위도 경도 
     private String content_lat;
-    private String content_long;
+    private String content_lng;
 	
     
     public int getContent_idx() {
@@ -99,10 +99,10 @@ public class ContentBean {
 		this.content_lat = content_lat;
 	}
 	public String getContent_long() {
-		return content_long;
+		return content_lng;
 	}
 	public void setContent_long(String content_long) {
-		this.content_long = content_long;
+		this.content_lng = content_long;
 	}
 	
 	
