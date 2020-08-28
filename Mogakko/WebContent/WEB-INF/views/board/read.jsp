@@ -39,6 +39,11 @@
 						<input type="text" id="board_subject" name="board_subject" class="form-control" value="${readContentBean.content_subject }" disabled="disabled"/>
 					</div>
 					<div class="form-group">
+						<label for="board_location">위치</label>
+						<input type="text" id="board_location" name="board_location" class="form-control" value="${readContentBean.content_location }" disabled="disabled"/>
+					</div>
+									
+					<div class="form-group">
 						<label for="board_content">내용</label>
 						<textarea id="board_content" name="board_content" class="form-control" rows="10" style="resize:none" disabled="disabled">${readContentBean.content_text }</textarea>
 					</div>

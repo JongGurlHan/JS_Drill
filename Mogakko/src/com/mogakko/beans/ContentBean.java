@@ -24,8 +24,12 @@ public class ContentBean {
     private String content_date;
     private String content_writer_name;
     
-    //위치 값
-    private int content_location;
+    //선택자- 지역선택
+    private String content_location;
+    
+    //위도 경도 
+    private String content_lat;
+    private String content_long;
 	
     
     public int getContent_idx() {
@@ -82,13 +86,26 @@ public class ContentBean {
 	public void setContent_writer_name(String content_writer_name) {
 		this.content_writer_name = content_writer_name;
 	}
-	
-	public int getContent_location() {
+	public String getContent_location() {
 		return content_location;
 	}
-	public void setContent_location(int content_location) {
+	public void setContent_location(String content_location) {
 		this.content_location = content_location;
 	}
+	public String getContent_lat() {
+		return content_lat;
+	}
+	public void setContent_lat(String content_lat) {
+		this.content_lat = content_lat;
+	}
+	public String getContent_long() {
+		return content_long;
+	}
+	public void setContent_long(String content_long) {
+		this.content_long = content_long;
+	}
+	
+	
 	
 	
 	

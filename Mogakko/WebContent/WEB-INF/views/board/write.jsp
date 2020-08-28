@@ -36,15 +36,20 @@
 			<div class="card shadow">
 				<div class="card-body">				
 				
-					<form:form action ="${root}board/write_pro" method = "post" modelAttribute="writeContentBean" enctype="multipart/form-data">
+					<form:form action ="${root}board/write_pro" method = "post" modelAttribute= "writeContentBean" enctype="multipart/form-data">
 						<form:hidden path="content_board_idx"/> <!-- 게시판번호세팅 -->
 						<div class="form-group">
-							<form:label path="content_subject">제목</form:label>
-							<form:input path="content_subject" class="form-control"/>
-							<form:errors path="content_subject" style='color:red'></form:errors>
-						</div>
+							<form:label path="content_location">위치선택</form:label>							
+							<c:import url = "/WEB-INF/views/data/distriction.jsp"/>							
+						</div>	
 						<div class="form-group">
-							<form:label path="content_text">내용</form:label>
+							<form:label path="content_subject">제목</form:label> 
+							<form:input path="content_subject" class="form-control"/>
+			    				<form:errors path="content_subject" style='color:red'></form:errors>
+						</div>						
+						
+						<div class="form-group">
+							<form:label path="content_text">내용</form:label> 
 							<form:textarea path="content_text" class="form-control" rows="10" style="resize:none"/>
 							<form:errors path="content_text" style='color:red'></form:errors>
 						</div>
@@ -52,20 +57,19 @@
 							<form:label path="upload_file">첨부 이미지</form:label>
 							<form:input type='file' path="upload_file" class="form-control" accept="image/*"/>
 						</div>
-						<div class="form-group">
-							
-							<form:label path="content_location">위치 설정</form:label>	
+						
+						<%-- <div class="form-group">							
+							<form:label path="content_map">장소 찾기</form:label>	
 							<!-- 위치찾기는 따로 파일만들어서 import -->
 							<c:import url = "/WEB-INF/views/javascript/search.jsp"/>
-							
-							
-					
+						</div> --%>
 						
-						<div class="form-group">
+						<div class="form-group">							
 							<div class="text-right">
 								<form:button class="btn btn-primary">작성하기</form:button>
 							</div>
-						</div>					
+						</div>	
+										
 					</form:form>
 					
 				</div>

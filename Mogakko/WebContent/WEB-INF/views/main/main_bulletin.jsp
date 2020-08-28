@@ -34,10 +34,16 @@
 				<div class="card-body">
 					<h4 class="card-title">${board_list[idx.index].board_info_name}</h4>
 					<table class="table table-hover" id='board_list'>
+						<colgroup>
+							<col width="65px">
+							<col width="80px">
+							<col width="*">
+						</colgroup>
 						<thead>
 							<tr>
 								<th class="text-center w-25">글번호</th>
-								<th>제목</th>
+								<th class="text-center">지역</th>
+								<th class="text-center">제목</th>
 								<th class="text-center w-25 d-none d-xl-table-cell">작성날짜</th>
 							</tr>
 						</thead>
@@ -45,6 +51,7 @@
 							<c:forEach var='obj' items='${sub_list}'>
 								<tr>
 									<td class="text-center">${obj.content_idx}</td>
+									<td class="text-center ">${obj.content_location}</td>
 									<th><a href='${root }board/read?board_info_idx=${board_list[idx.index].board_info_idx}&content_idx=${obj.content_idx}&page=1'>${obj.content_subject}</a></th>
 									<td class="text-center d-none d-xl-table-cell">${obj.content_date}</td>
 								</tr>

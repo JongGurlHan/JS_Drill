@@ -46,6 +46,10 @@
 							<form:errors path="content_subject" style='color:red'/>
 						</div>
 						<div class="form-group">
+							<form:label path="content_location">위치</form:label>
+							<c:import url = "/WEB-INF/views/data/distriction.jsp"/>	
+						</div>
+						<div class="form-group">
 							<form:label path="content_text">내용</form:label>
 							<form:input path="content_text" class="form-control" rows="10" style="resize:none" />
 							<form:errors path="content_text" style='color:red'/>
