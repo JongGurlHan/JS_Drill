@@ -26,6 +26,8 @@
 <body>
 	<c:import url = "/WEB-INF/views/include/top_menu.jsp"/>				
 	<c:import url = "/WEB-INF/views/javascript/map_show.jsp"/>	
+	
+	나오는지테스트
 </body>
 
 </html>
