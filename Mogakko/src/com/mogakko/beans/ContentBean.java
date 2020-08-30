@@ -28,8 +28,8 @@ public class ContentBean {
     private String content_location;
     
     //위도 경도 
-    private String content_lat;
-    private String content_lng;
+    private double content_lat;
+    private double content_lng;
 	
     
     public int getContent_idx() {
@@ -92,18 +92,20 @@ public class ContentBean {
 	public void setContent_location(String content_location) {
 		this.content_location = content_location;
 	}
-	public String getContent_lat() {
+	public double getContent_lat() {
 		return content_lat;
 	}
-	public void setContent_lat(String content_lat) {
+	public void setContent_lat(double content_lat) {
 		this.content_lat = content_lat;
 	}
-	public String getContent_long() {
+	public double getContent_lng() {
 		return content_lng;
 	}
-	public void setContent_long(String content_long) {
-		this.content_lng = content_long;
+	public void setContent_lng(double content_lng) {
+		this.content_lng = content_lng;
 	}
+	
+	
 	
 	
 	

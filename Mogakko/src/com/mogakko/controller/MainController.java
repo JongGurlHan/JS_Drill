@@ -33,6 +33,7 @@ public class MainController {
 	@GetMapping("/main_bulletin")
 	public String main_bulletin(Model model) {
 		
+		//게시글 리스트 가져오기
 		ArrayList<List<ContentBean>> list = new ArrayList<List<ContentBean>>();
 		
 		for(int i = 1; i <= 2; i++) {
@@ -42,6 +43,7 @@ public class MainController {
 		
 		model.addAttribute("list", list);	
 		
+		//게시판 이름 가져오기
 		List<BoardInfoBean> board_list = topMenuService.getTopMenuList();
 		model.addAttribute("board_list" , board_list);
 		
@@ -54,7 +56,9 @@ public class MainController {
 	public String main_map(Model model) {
 		
 		
-		
+		 List<ContentBean> getContentLatLng = boardService.getContentLatLng();
+		 model.addAttribute("getContentLatLng", getContentLatLng);
+		 
 		return "main/main_map";
 	}
 	

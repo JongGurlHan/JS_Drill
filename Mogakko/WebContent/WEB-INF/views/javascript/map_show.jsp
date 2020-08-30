@@ -14,35 +14,33 @@
 	    zoom: 15
 	});
 	
-	function CustomMarker(lat, lng, crimeID, meetingGubun, serious, crimeDate, crimeTime){
+	function CustomMarker(lat, lng, content_idx){
 		
 		//심각성1
 		var contents_html =  
 			'<div style="padding-top:5px; padding-bottom:5px; padding-right:5px; background-color:#00BFFF;' 
 			+ 'color:white; text-align:center; border:1px solid #00BFFF; border-radius:15px; opacity:75%"' 
-			+ 'onmouseover="javascript:overDetail(\''+crimeID+'\');" onmouseout="javascript:outDetail(\''+crimeID+'\');">'
-			+ '<div style="font-weight: bold; font-size:14px"> '+crimeGubun+' </div>'
-			+ '<div style="font-weight: normal; font-size:13px; margin-top:3px; display:none" id="'+crimeID+'"> '+crimeDate+' <br/> '+crimeTime+' </div>' 
+			+ 'onmouseover="javascript:overDetail(\''+content_idx+'\');" onmouseout="javascript:outDetail(\''+content_idx+'\');">'
+			+ '<div style="font-weight: bold; font-size:14px"> '+"모각코"+' </div>'
+			+ '<div  id="'+content_idx+'" style="font-weight: normal; font-size:13px; margin-top:3px; display:none"> '+"자세히 알아보기"+' </div>' 
 			+'</div>';			
 			
 		var marker = new naver.maps.Marker({
 		    position: new naver.maps.LatLng(lat, lng),
-		    map: map,
-		    title: crimeGubun, //추후 '모각코'로 변경
+		    map: map,		  
 		    icon: {
 		    	content: contents_html, 
 			    size: new naver.maps.Size(38, 58),
-			    anchor: new naver.maps.Point(19, 58),
-		    	
+			    anchor: new naver.maps.Point(19, 58)		    	
 		    }, 
 		    draggable: false	    
 		}); 
 		return marker;		
 	};
 	
-	var marker1 = new CustomMarker(37.709406, 127.048289, "crime1", "모각코", 1, "2020-08-27", "14:23:23");
-	var marker2 = new CustomMarker(37.708603, 127.048486, "crime2", "모각코", 2, "2020-08-28", "14:23:23");
-	var marker3 = new CustomMarker(37.707635, 127.046383, "crime3", "모각코", 3, "2020-08-29", "14:23:23");
+	var marker1 = new CustomMarker(37.709406, 127.048289, 9);
+	var marker2 = new CustomMarker(37.708603, 127.048486, 10);
+	var marker3 = new CustomMarker(37.707635, 127.046383, 11);
 	
 	function overDetail(childID){
 		$("#"+childID).show();
@@ -61,6 +59,11 @@
 	
 	
 </script>
+
+<div class="form-group">
+						<label for="board_writer_name">작성자</label>
+						<input type="text" id="board_writer_name" name="board_writer_name" class="form-control" value="${readContentBean.content_writer_name }" disabled="disabled"/>
+					</div>
 
 <!-- function CustomMarker(lat, lng, crimeID, crimeGubun, serious, crimeDate, crimeTime){
 		
