@@ -68,11 +68,10 @@
 		}); 
 		return marker;		
 	};
-	var i =1
-	while(i <1000){
-		var marker[i] = new CustomMarker(${getContentLatLng.content_lat}, ${getContentLatLng.content_lng},  i);		
-		i++;
-	}
+	
+	
+	
+	
 	/* var marker2 = new CustomMarker(37.708603, 127.048486, 10);
 	var marker3 = new CustomMarker(37.707635, 127.046383, 11); */
 	

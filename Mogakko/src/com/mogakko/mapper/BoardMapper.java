@@ -55,9 +55,9 @@ public interface BoardMapper {
 	
 	 //위도경도 정보 가져오기
 	  
-	 @Select("select a1.content_idx, a1.content_lat, a1.content_lng, a1.content_location "
-			 + "from content_table a1 " 
-			 + "where a1.content_board_idx = 1" ) 
+	 @Select("select a1.content_idx, a1.content_lat, a1.content_lng, a1.content_location " + 
+	 		"from content_table a1 " + 
+	 		"where a1.content_board_idx = 1 " ) 
 	 List<ContentBean> getContentLatLng();	 
 
 	}

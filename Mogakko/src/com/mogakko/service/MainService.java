@@ -24,6 +24,11 @@ public class MainService {
 		
 	}
 	
+	//위도경도 정보 가져오기
+	 public List<ContentBean> getContentLatLng() { 
+		 return boardDao.getContentLatLng(); 
+	   }
+	
 	
 
 }
