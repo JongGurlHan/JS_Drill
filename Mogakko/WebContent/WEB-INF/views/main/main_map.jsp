@@ -47,7 +47,7 @@
 	
 	function CustomMarker(lat, lng, content_idx){
 		
-		//심각성1
+		//심각성1	
 		var contents_html =  
 			'<div style="padding-top:5px; padding-bottom:5px; padding-right:5px; background-color:#00BFFF;' 
 			+ 'color:white; text-align:center; border:1px solid #00BFFF; border-radius:15px; opacity:75%"' 
