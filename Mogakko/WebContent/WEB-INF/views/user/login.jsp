@@ -14,6 +14,38 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+<!-- 구글 로그인 관련 -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script>
+	function init() {
+		  console.log('init');
+	  gapi.load('auth2', function() {
+		  console.log('auth2');
+	  var gauth = gapi.auth2.init({
+		  client_id:'979152736167-8qsgm0f60l99ut8d2n2vav23atg9532j.apps.googleusercontent.com'
+	 	 })
+	  gauth.then(function(){
+		  console.log('googleAuth success');		  
+	  }, function(){
+		  console.log('googleAuth fail');		  
+		   
+	  	});
+	  
+	  });
+	}
+
+	function onSignIn(googleUser) {
+	  var profile = googleUser.getBasicProfile();
+	  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+	  console.log('Name: ' + profile.getName());
+	  console.log('Image URL: ' + profile.getImageUrl());
+	  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+	}
+</script>
+
+<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+
 </head>
 <body>
 

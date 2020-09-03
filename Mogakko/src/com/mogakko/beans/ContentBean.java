@@ -23,6 +23,7 @@ public class ContentBean {
     private int content_board_idx;
     private String content_date;
     private String content_writer_name;
+    private String content_writer_id;
     
     //선택자- 지역선택
     private String content_location;
@@ -85,6 +86,16 @@ public class ContentBean {
 	}
 	public void setContent_writer_name(String content_writer_name) {
 		this.content_writer_name = content_writer_name;
+	}
+	
+	
+	
+	
+	public String getContent_writer_id() {
+		return content_writer_id;
+	}
+	public void setContent_writer_id(String content_writer_id) {
+		this.content_writer_id = content_writer_id;
 	}
 	public String getContent_location() {
 		return content_location;
