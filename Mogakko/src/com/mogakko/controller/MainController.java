@@ -60,8 +60,7 @@ public class MainController {
 		 model.addAttribute("getContentLatLng", getContentLatLng);
 		 
 		return "main/main_map";
-	}
-	
+	}	
 	
 
 }

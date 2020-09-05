@@ -25,16 +25,22 @@
 
 <body>
 	<c:import url = "/WEB-INF/views/include/top_menu.jsp"/>	
-	<c:forEach var='obj' items='${getContentLatLng}'>
+	<%-- <c:forEach var='obj' items='${getContentLatLng}'>
 		<h4 class="card-title">${obj.content_lat}</h4>
 		<h4 class="card-title">${obj.content_lng}</h4>
-	</c:forEach>			
+	</c:forEach>	 --%>		
 	
 	
 	
 	<div id ="map" style = "width:100%; height:900px;"></div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=l8cf5xz3fl"></script>
+	
+	
+	
+	
+	
+	
 	<script>
 	//지도를 삽입할 HTML 요소 또는 HTML 요소의 id를 지정합니다.
 	var mapDiv = document.getElementById('map'); // 'map'으로 선언해도 동일
@@ -70,10 +76,21 @@
 	};
 	
 	
+	/* $.ajax({
+		url: '/main/LatLngTester2.jsp',
+		type: 'get',
+		success : function(data){
+			alert('연결성공');
+				
+			},
+			error : function(){
+		          alert('연결실패 ㅠㅠ');
+		    }
+		}
+	}) */
 	
-	
-	/* var marker2 = new CustomMarker(37.708603, 127.048486, 10);
-	var marker3 = new CustomMarker(37.707635, 127.046383, 11); */
+	var marker2 = new CustomMarker(37.708603, 127.048486, 10);
+	var marker3 = new CustomMarker(37.707635, 127.046383, 11);
 	
 	function overDetail(childID){
 		$("#"+childID).show();
