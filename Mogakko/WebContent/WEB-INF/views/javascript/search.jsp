@@ -21,14 +21,17 @@
 
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8099663361f4953ff78764c9fff573c5&libraries=services"></script>
 	<script>
-	// 마커를 담을 배열입니다
-	var markers = [];
+	
 	
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = {
 	        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
 	        level: 4 // 지도의 확대 레벨
 	    };  
+	
+	// 마커를 담을 배열입니다
+	var markers = [];
+	
 	
 	// 지도를 생성합니다    
 	var map = new kakao.maps.Map(mapContainer, mapOption); 
