@@ -25,6 +25,29 @@
 
 <body>
 	<c:import url = "/WEB-INF/views/include/top_menu.jsp"/>	
+	
+	<script>
+	$.ajax({
+		url: '/resources/test3.jsp',
+		type:'get' ,
+		success:function(data){
+			alert('성공');
+			
+			$(t).find("person").each(function(){
+                var content_location = $(this).find('content_location').text();
+                var content_lat = $(this).find('content_lat').text();
+                var content_lng = $(this).find('content_lng').text();
+                $('<h1></h1>').text(content_location+" "+content_lat+" "+content_lng).appendTo('body');
+             });
+		},
+		 error : function(){
+             alert('실패 ㅠㅠ');
+			}
+		
+		
+	});
+	
+	</script>
 
 
 	

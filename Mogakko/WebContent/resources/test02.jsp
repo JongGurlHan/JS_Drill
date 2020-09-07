@@ -37,7 +37,7 @@ try {
         double content_lat = rs.getDouble("CONTENT_LAT");
         double content_lng = rs.getDouble("CONTENT_LNG");
         
-     	out.write(content_location+" "+content_lat+" "+content_lng+"<br/>");   //데이터를 요청하는 클라이언트에게 보내준다.
+     	out.write(" "+content_lat+" "+content_lng+"<br/>");   //데이터를 요청하는 클라이언트에게 보내준다.
    
 }
 con.close();
