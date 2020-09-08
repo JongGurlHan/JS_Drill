@@ -18,7 +18,7 @@ public class MainService {
 	//게시글 리스트 가져오기
 	public List<ContentBean> getMainList(int board_info_idx){
 		
-		RowBounds rowBounds = new RowBounds(0,10);
+		RowBounds rowBounds = new RowBounds(0,7);
 		
 		return boardDao.getContentList(board_info_idx, rowBounds);
 		

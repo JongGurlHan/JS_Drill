@@ -40,21 +40,12 @@
     
     
   <div class="w3-display-middle">
-    <h1 class="w3-jumbo w3-animate-top">mogakko</h1>
-    <hr class="w3-border-grey" style="margin:auto;width:40%">
+    <h1 class="w3-jumbo w3-animate-top w3-center" >mogakko</h1>
+     <hr class="w3-border-grey" style="margin:auto;width:60%"> 
     <p class="w3-large w3-center">느슨하지만 꾸준하게, 모여서 각자 코딩하자!</p>
     
-    <!-- Tabs -->
-    <div id="Flight" class="w3-container w3-white w3-padding-16 myLink">
-    
-      <div class="w3-row-padding" style="margin:0 -16px;">
-        <div class="w3-half">         
-          <input class="w3-input w3-border" type="text" >
-        </div>
-        
-      </div>
-      <p>
-      <button class="w3-button w3-dark-grey" onclick ="location.href= '${root}main/main_map'">모각코 모임검색</button></p>
+  
+      <button class="w3-button w3-dark-grey" style="position:absolute; left:50%; margin-left:-80px;" onclick ="location.href= '${root}main/main_bulletin'">모각코 모임검색</button>
     </div>
     
     
