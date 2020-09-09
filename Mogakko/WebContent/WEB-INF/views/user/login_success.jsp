@@ -5,5 +5,5 @@
 
 <script>
 	alert('로그인 되었습니다.');
-	location.href = '${root}main/main_map'
+	location.href = '${root}main/main_bulletin'
 </script>

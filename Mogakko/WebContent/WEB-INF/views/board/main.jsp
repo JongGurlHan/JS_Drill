@@ -21,7 +21,7 @@
 <c:import url = "/WEB-INF/views/include/top_menu.jsp"/>	
 
 <!-- 게시글 리스트 -->
-<div class="container" style="margin-top:100px">
+<div class="container" style="margin-top:100px; margin-bottom:150px">
 	<div class="card shadow">
 		<div class="card-body">
 			<h4 class="card-title">${boardInfoName}</h4>
@@ -108,7 +108,7 @@
 	</div>
 </div>
 
-<c:import url = "/WEB-INF/views/include/bottom_info.jsp"/>	
+<c:import url = "/WEB-INF/views/include/bottom_info.jsp"/>	 
 
 </div>
 </body>

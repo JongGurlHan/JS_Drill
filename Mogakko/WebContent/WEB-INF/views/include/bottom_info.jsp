@@ -6,11 +6,11 @@
 	}
 </style>
 </div>
-<div class="container-fluid bg-dark text-white" style=" bottom: 0; position:fixed; padding-top:30px;padding-bottom:20px; z-index: 1;">
+	<div class="container-fluid bg-dark text-white" style=" bottom: 0; margin-top:50px; position:fixed; padding-top:30px;padding-bottom:20px; z-index: 4;">
 		
 		<!-- style="margin-top:50px;margin-bottom:0px;padding-top:30px;padding-bottom:20px;position:absolute;bottom:0; z-index: 1;" -->
 		<div class="container">
-			<div>mogak</div>
+			<div>mogakko</div>
 			<div>개발자: 한종걸 | 이메일: gojkhan13@gmail.com | 연락처: 010-8422-2789</div>		
 		</div>
 	</div>
