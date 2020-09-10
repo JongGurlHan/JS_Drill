@@ -40,8 +40,7 @@
 					}
 				}
 			})
-		}
-		
+		}		
 		function resetUserIdExist(){
 			$("#userIdExist").val('false')
 		}

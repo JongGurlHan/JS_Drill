@@ -17,8 +17,7 @@ public class BoardDao {
 	private BoardMapper boardMapper;
 	
 	public void addContentInfo(ContentBean writeContentBean) {		
-		
-		boardMapper.addContentInfo(writeContentBean);		
+			boardMapper.addContentInfo(writeContentBean);				
 	}
 	
 	//게시판 이름 가져오기	
@@ -49,16 +48,7 @@ public class BoardDao {
 	public int getContentCnt(int content_board_idx) {
 		return boardMapper.getContentCnt(content_board_idx);		
 	}
-	
-	
-	 //위도경도 정보 가져오기 
-	public  List<ContentBean> getContentLatLng() {
-		return boardMapper.getContentLatLng();
-	}
-	 
-
-	
-	
+		
 	
 	
 

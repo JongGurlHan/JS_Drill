@@ -101,8 +101,7 @@ public class ServletAppContext implements WebMvcConfigurer{
 		return factory;
 	}
 	
-	//쿼리문 실행을 위한 객체(Mapper관리)
-	
+	//쿼리문 실행을 위한 객체(Mapper관리)	
 	@Bean
 	public MapperFactoryBean<BoardMapper> getBoardMapper(SqlSessionFactory factory) throws Exception{
 		MapperFactoryBean<BoardMapper> factoryBean = new MapperFactoryBean<BoardMapper>(BoardMapper.class);
@@ -136,10 +135,9 @@ public class ServletAppContext implements WebMvcConfigurer{
 		
 		CheckLoginInterceptor checkLoginInterceptor = new CheckLoginInterceptor(loginUserBean);
 		InterceptorRegistration reg2 = registry.addInterceptor(checkLoginInterceptor);
+		reg2.addPathPatterns("/user/modify", "/user/logout", "/board/*");
+		reg2.excludePathPatterns("/board/main");
 		
-		 reg2.addPathPatterns("/user/modify", "/user/logout", "/board/*");
-		 reg2.excludePathPatterns("/board/main");
-	
 		
 		CheckWriterInterceptor checkWriterInterceptor = new CheckWriterInterceptor(loginUserBean, boardService);
 		InterceptorRegistration reg3 = registry.addInterceptor(checkWriterInterceptor);
@@ -148,7 +146,7 @@ public class ServletAppContext implements WebMvcConfigurer{
 	}	
 	
 	//두개의 프로퍼터기 따로 관리된다.
-	//자바코드 방식에선 properties파일을 propertySource로 등록하고, 파일이 다르다 하더라도, 메세지로 등록하면 
+	//자바코드 방식에선 properties파일을 propertySource로 등록하고, 파일이 다르다 하더라도 메세지로 등록하면 
 	//두개가 충돌해서 하나도 인식못하는 일이 발생한다. 
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer PropertySourcesPlaceholderConfigurer() {

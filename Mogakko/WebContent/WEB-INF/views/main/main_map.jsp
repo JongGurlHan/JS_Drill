@@ -23,8 +23,7 @@
 	<title>프로젝트-mogak</title>
 </head>
 
-<body>
-	<c:import url = "/WEB-INF/views/include/top_menu.jsp"/>	
+<body>	
 	
 	<script>
 		alert('준비중입니다.')

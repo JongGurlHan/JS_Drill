@@ -7,7 +7,7 @@
 <!-- 상단 메뉴 부분 -->
 <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top shadow-lg">
 	
-	<a class="navbar-brand" href="${root}">mogakko</a> 
+	<a class="navbar-brand" href="${root}">mogak</a> 
 	
 	<!-- 동적메뉴구성 -->
 	<button class="navbar-toggler" type="button" data-toggle="collapse"

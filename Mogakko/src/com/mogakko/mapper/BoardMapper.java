@@ -27,14 +27,14 @@ public interface BoardMapper {
 
 	// 게시판 리스트 가져오기
 	@Select("SELECT a1.content_idx, a1.content_subject, "
-			+ "    a2.user_name as content_writer_name, to_char(a1.content_date, 'YYYY-MM-DD')as content_date, a1.content_location "
+			+ " a2.user_name as content_writer_name, to_char(a1.content_date, 'YYYY-MM-DD')as content_date, a1.content_location "
 			+ "FROM CONTENT_TABLE a1, USER_TABLE a2 " + "WHERE a1.content_writer_idx = a2.user_idx "
 			+ "    and a1.content_board_idx =  #{board_info_idx} " + "order by a1.content_idx desc")
 	List<ContentBean> getContentList(int board_info_idx, RowBounds rowBounds);
 
 	// 게시글 정보 가져오기
 	@Select("select a2.user_name as content_writer_name, to_char(a1.content_date, 'YYYY-MM-DD')as content_date, "
-			+ "        a1.content_subject, a1.content_text, a1.content_file, a1.content_writer_idx, a2.user_id as content_writer_id, a1.content_location  "
+			+ " a1.content_subject, a1.content_text, a1.content_file, a1.content_writer_idx, a2.user_id as content_writer_id, a1.content_location  "
 			+ "from content_table a1, user_table a2 " + "where a1.content_writer_idx = a2.user_idx "
 			+ "and content_idx = #{content_idx} ")
 	ContentBean getContentInfo(int board_info_idx);
@@ -53,12 +53,6 @@ public interface BoardMapper {
 	int getContentCnt(int content_board_idx);
 
 	
-	 //위도경도 정보 가져오기
-	  
-	 @Select("select a1.content_idx, a1.content_lat, a1.content_lng, a1.content_location " + 
-	 		"from content_table a1 " + 
-	 		"where a1.content_board_idx = 1 " ) 
-	 List<ContentBean> getContentLatLng();	 
 
 	}
 

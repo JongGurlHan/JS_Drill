@@ -55,10 +55,7 @@ public class MainController {
 	@GetMapping("/main_map")
 	public String main_map(Model model) {
 		
-		
-		 List<ContentBean> getContentLatLng = mainService.getContentLatLng();
-		 model.addAttribute("getContentLatLng", getContentLatLng);
-		 
+			 
 		return "main/main_map";
 	}	
 	
