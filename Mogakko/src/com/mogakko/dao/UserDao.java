@@ -31,6 +31,11 @@ public class UserDao {
 		public void modifyUserInfo(UserBean modifyUserBean) {
 			userMapper.modifyUserInfo(modifyUserBean);
 		}
+		
+		public Object deleteUserInfo(int user_idx) {
+			return userMapper.deleteUserInfo(user_idx);
+		}
+		
 	}
 
 

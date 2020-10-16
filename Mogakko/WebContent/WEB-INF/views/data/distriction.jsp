@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "form" uri = "http://www.springframework.org/tags/form" %>
 <form:select path="content_location" class="form-control">
+	<form:option value="">선택안함</form:option>
 	<form:option value="강남구">강남구</form:option>
 	<form:option value="강동구">강동구</form:option>
 	<form:option value="강북구">강북구</form:option>
